@@ -4,15 +4,15 @@ update: upstream/apps upstream/packages upstream/images
 
 upstream/packages: upstream/apps/index.json
 	mkdir -p upstream/packages
-	make -f Apps.make upstream/packages
+	make -f Apps.mk upstream/packages
 
 upstream/apps: upstream/apps/index.json
 	mkdir -p upstream/apps
-	make -f Apps.make upstream/apps
+	make -f Apps.mk upstream/apps
 
 upstream/images: upstream/apps/index.json
 	mkdir -p upstream/images
-	make -f Apps.make upstream/images
+	make -f Apps.mk upstream/images
 
 upstream/apps/index.json:
 	mkdir -p upstream/apps

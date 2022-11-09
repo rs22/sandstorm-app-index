@@ -5,7 +5,7 @@ RUN apk add --no-cache make jq curl ca-certificates
 WORKDIR /app
 
 COPY Makefile .
-COPY Apps.make .
+COPY Apps.mk .
 COPY cronjobs /etc/crontabs/root
 
 # start crond with log level 8 in foreground, output to stderr

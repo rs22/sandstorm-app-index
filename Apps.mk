@@ -5,10 +5,9 @@ IMAGES   := $(shell cat upstream/apps/index.json | jq -rc '.apps[] | "upstream/i
 upstream/apps: $(APPS)
 upstream/apps/%.json:
 	curl -s https://app-index.sandstorm.io/apps/$*.json > $@
-
-# upstream/apps/versions/%.json:
-# 	mkdir -p upstream/apps/versions
-# 	touch $@
+	bash -c "cat $@ | jq -rc '.screenshots[] | .imageId' | while read imageId; do \
+   curl -s https://app-index.sandstorm.io/images/\$$imageId.json > upstream/images/\$$imageId ; \
+  done"
 
 upstream/packages: $(PACKAGES)
 upstream/packages/%:
