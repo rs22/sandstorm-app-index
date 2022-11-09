@@ -6,7 +6,7 @@ upstream/apps: $(APPS)
 upstream/apps/%.json:
 	curl -s https://app-index.sandstorm.io/apps/$*.json > $@
 	sh -c "cat $@ | jq -rc '.screenshots[] | .imageId' | while read imageId; do \
-   curl -s https://app-index.sandstorm.io/images/\$$imageId.json > upstream/images/\$$imageId ; \
+   curl -s https://app-index.sandstorm.io/images/\$$imageId > upstream/images/\$$imageId ; \
   done"
 
 upstream/packages: $(PACKAGES)
