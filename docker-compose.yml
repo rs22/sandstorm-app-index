@@ -1,0 +1,15 @@
+version: "3"
+
+volumes:
+  data:
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+     - data:/usr/share/nginx/html
+
+  crawler:
+    build: .
+    volumes:
+     - data:/app/upstream
