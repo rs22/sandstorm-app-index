@@ -1,6 +1,6 @@
 .PHONY: upstream/apps/index.json
 
-update: upstream/packages upstream/apps upstream/images
+update: upstream/apps upstream/packages upstream/images
 
 upstream/packages: upstream/apps/index.json
 	mkdir -p upstream/packages

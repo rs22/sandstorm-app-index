@@ -4,7 +4,7 @@ IMAGES   := $(shell cat upstream/apps/index.json | jq -rc '.apps[] | "upstream/i
 
 upstream/apps: $(APPS)
 upstream/apps/%.json:
-	curl -s https://app-index.sandstorm.io/$@ > $@
+	curl -s https://app-index.sandstorm.io/apps/$*.json > $@
 
 # upstream/apps/versions/%.json:
 # 	mkdir -p upstream/apps/versions
@@ -12,8 +12,8 @@ upstream/apps/%.json:
 
 upstream/packages: $(PACKAGES)
 upstream/packages/%:
-	curl -s https://app-index.sandstorm.io/$@ > $@
+	curl -s https://app-index.sandstorm.io/packages/$* > $@
 
 upstream/images: $(IMAGES)
 upstream/images/%:
-	curl -s https://app-index.sandstorm.io/$@ > $@
+	curl -s https://app-index.sandstorm.io/images/$* > $@
